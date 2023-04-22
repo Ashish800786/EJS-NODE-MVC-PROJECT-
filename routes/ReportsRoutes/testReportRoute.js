@@ -1,0 +1,11 @@
+const express= require('express')
+const testReportController=require('../../controllers/ReportsControllers/testReportController')
+const auth_middleware=require('../../middlewares/authenticateMiddleware')
+const testReportRouter=express()
+const bodyParser=require('body-parser')
+testReportRouter.use(bodyParser.json())
+testReportRouter.use(bodyParser.urlencoded({extended:true}))
+testReportRouter.set('view engine' ,'ejs')
+testReportRouter.set('views','./views')
+testReportRouter.get('',auth_middleware.is_login,testReportController.index)
+module.exports=testReportRouter

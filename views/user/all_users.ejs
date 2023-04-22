@@ -1,0 +1,128 @@
+<%- include('../layouts/main_layout')  %>
+ <!--Container Main start-->
+<div class="height-100 bg-light col-md-12" >
+    <h4>Users </h4>
+    <div class="row">
+        <div class="col-md-12 card border-0 p-3 ">
+            <div class="card-body border border-mutted  rounded " style="height:max-content;">
+                <div id="searching" hidden>inp=text|name=name_srch|id=name_srch,inp=email|name=email_srch|id=email_srch,inp=text|name=mobile_srch|id=mobile_srch</div>
+                <div id="searching_frm"></div>
+                
+                <div class="col-md-12 p-2">
+                    <% if(msg.length > 0 ) {%>
+                        <div class="alert alert-success alert-dismissible  col-md-12 " role="alert">
+                            <strong>Great !</strong> <%- msg %>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+
+                        
+                    <% } %>
+                    <% if( err.length > 0 ) {%>
+                        <div class="alert alert-warning alert-dismissible col-md-12 " role="alert">
+                            <strong>Opps !</strong> <%- err %>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    <% } %>
+                </div>
+                <table class="table table-bordered" id="datatablesSimples">
+                    <thead class="bg-primary text-light">
+                        <!-- <tr class="text-center" style="vertical-align: middle;">
+                            <th >Name</th>
+                            <th>Email</th>
+                            <th>Mobile</th>
+                            <th>Status</th>
+                            <th colspan="2">Action</th>
+                        </tr> -->
+                        <tr class="text-center" style="vertical-align: middle;">
+                            <th >Name</th>
+                            <th>Email</th>
+                            <th>Mobile</th>
+                            <th>Status</th>
+                            <th >Action</th>
+                            <th >Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <% all_user.map(function(elem){%>
+                        <tr class="text-center" style="vertical-align: middle;">
+                            <td><%= elem.name %></td>
+                            <td><%= elem.email %></td>
+                            <td><%= elem.mobile %></td>
+                            <td>
+                                <a href="user/status/<%= elem._id %>" class="text-warning h5">
+                                    <% if(elem.status == 1){ %>
+                                        <i class='bx bxs-check-shield text-success'></i>
+                                    <% }else{ %>
+                                    <i class='bx bx-block text-danger' ></i>
+                                    <%  } %>
+                               </a>
+                            </td>
+                            <td><a href="user/edit/<%= elem._id %>" class="text-warning h5"><i class='bx bxs-edit' ></i></a></td>
+                            <td><a href="user/delete/<%= elem._id %>"  class="text-danger h5"><i class='bx bxs-trash' ></i></a></td>
+                        </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Container Main end-->
+<script>
+    $(document).ready(function()
+    {
+        $('#myTable').DataTable('#myTable');
+        var st_frm=`<div class="card col-md-12 mx-auto mb-3"><div class="card-header"><h5>Serach</h5></div><div class="card-body border border-mutted"><form><div class="row p-2">`;
+        var end_frm=`</div></form></div></div>`;
+        var search_btn=`<div class="row col-md-12 "><button class="btn btn-primary text-light col-md-4 mx-auto mt-2" type="button">Search</button></div>`;
+        var srch_frm='';
+        var srch_data=$('#searching').html();
+        var split_srch_data=srch_data.split(',')
+        var inp_st_dv=`<div class="form-group col-md-4">`;
+        var inp_end_dv=`</div>`;
+
+        var arr=[split_srch_data];
+        var arr2=[];
+        var arr3=[];
+        var arr4='';
+        var arr5=[];
+        var arr6=[];
+        for(let i=0;i<arr[0].length;i++)
+        {
+            arr2.push(arr[0][i].split('|'));
+        }
+        
+        for(let i=0;i<arr2.length;i++)
+        {
+            srch_frm+=inp_st_dv+`<label  id='label_${i}'>Name</label>`;
+            srch_frm+=`<input class="form-control" `;
+            for(let j=0;j<arr2[i].length;j++)
+            {
+                arr4=(arr2[i][j].split('='));
+                    for(let l=0;l<arr4.length;l++)
+                    {
+                        if(l/3==0)
+                        {
+                          srch_frm+=` ${arr4[l]}="${arr4[l+1]}"`;
+                        }
+                        $('#label_'+l).attr('for',arr4[l+1]);
+                        $('#label_'+l).text(arr4[l+1]);
+                    }
+            }  
+            srch_frm+=`/>`+inp_end_dv;
+        }
+
+        // alert(srch_frm);
+        var srch_data=$('#searching_frm').html(st_frm+srch_frm+search_btn+end_frm); 
+    });
+
+
+
+
+   
+
+
+</script>
+
+<%- include('../layouts/footer')  %>

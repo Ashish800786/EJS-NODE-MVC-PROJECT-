@@ -1,0 +1,11 @@
+const express = require('express')
+const salaryPricingRouter=express()
+const salaryPricingController=require('../../controllers/PricingController/salaryPricingController')
+const auth_middleware= require('../../middlewares/authenticateMiddleware')
+const bodyParser= require('body-parser')
+salaryPricingRouter.use(bodyParser.json())
+salaryPricingRouter.use(bodyParser.urlencoded({extended:true}))
+salaryPricingRouter.set('view engine','ejs')
+salaryPricingRouter.set('views','./views')
+salaryPricingRouter.get('',auth_middleware.is_login,salaryPricingController.index)
+module.exports=salaryPricingRouter

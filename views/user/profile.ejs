@@ -1,0 +1,113 @@
+<%- include('../layouts/main_layout')  %>
+<!-- dashboard inner -->
+<div class="midde_cont">
+   <div class="container-fluid">
+      <div class="row column_title">
+         <div class="col-md-12">
+            <div class="page_title">
+               <h2>Profile</h2>
+            </div>
+         </div>
+      </div>
+      <!-- row -->
+      <div class="row">
+           <!-- Profile  -->
+         <div class="col-md-3">
+            <div class="white_shd full margin_bottom_30">
+               <div class="full graph_head">
+                  <div class="heading1 margin_0">
+                     <h2>Your Profile </h2>
+                  </div>
+               </div>
+               <div class="table_section padding_infor_info">
+                 
+                     <form>
+                        <div class="form-group">
+                          
+                           <!-- <input type="text" placeholder="Teacher Name" id="teacher_txt" name="teacher_txt" class="form-control"> -->
+                          <center><img src="/images/dp.png" height="165px;"></center> 
+                        </div>
+                        <div class="form-group">
+                            <label for="profile_img" class="col-md-12">
+                                <div class="btn btn-sm btn-success col-md-12 form-control"><i class="fa fa-upload"></i> upload </div>
+                            </label>
+                            <input type="file"  name="profile" id="profile_img" hidden >
+                        </div>
+                        
+                        
+                        <div class="form-group mt-3">
+                            <div class="h-5 text-dark text-center"><i class="fa fa-user"></i> <%= user.name %></div>
+                            <div class="h-5 text-dark text-center"><i class="fa fa-envelope"></i> <%= user.email %></div>
+                            <div class="h-5 text-dark text-center"><i class="fa fa-phone"></i> <%= user.mobile %></div>
+                        </div>
+
+
+                        
+                     </form>
+              
+               </div>
+            </div>
+         </div>
+         <!-- /Profile  -->
+
+
+         <!-- Details -->
+         <div class="col-md-9 ">
+            <div class="white_shd full margin_bottom_30">
+               <div class="full graph_head">
+                  <div class="heading1 margin_0">
+                     <h2>Your Details </h2>
+                  </div>
+               </div>
+               <div class="table_section padding_infor_info">
+                 
+                     <form>
+                       <div class="row">
+                        <div class="form-group col-md-4">
+                           <label>First Name</label>
+                           <input type="text" placeholder="Teacher Name" id="teacher_txt" name="teacher_txt" class="form-control" value="<%= user.name %>">
+                        </div>
+
+                        <div class="form-group col-md-4">
+                           <label>Last Name</label>
+                           <input type="text" placeholder="Teacher Name" id="teacher_txt" name="teacher_txt" class="form-control">
+                        </div>
+                        <div class="form-group col-md-4">
+                           <label>Email</label>
+                           <input type="email" placeholder="Email" id="email" name="email" class="form-control" value="<%= user.email %>">
+                        </div>
+                        <div class="form-group col-md-4">
+                           <label>Mobile</label>
+                           <input type="text" placeholder="mobile" id="mobile" name="mobile" class="form-control" value="<%= user.mobile %>">
+                        </div>
+
+                        <div class="form-group col-md-4">
+                           <label>Subject</label>
+                           <select  id="subject_dpd" name="subject_dpd" class="form-control">
+                              <option>Nothing selected</option>
+                              <option value="1">Hindi</option>
+                              <option value="2">English</option>
+                           </select>
+                        </div>
+                        
+                        <div class="form-group col-md-12">
+                           <label>Address</label>
+                           <textarea name="address" id="address" class="form-control"></textarea>
+                        </div>
+
+
+                        <div class="form-group col-md-12">
+                            <div class="btn btn-sm btn-success col-md-12">Submit</div>
+                        </div>
+                    </div>
+                     </form>
+               
+               </div>
+            </div>
+         </div>
+         
+        
+      </div>
+   </div>
+<!-- end dashboard inner -->
+<%- include('../layouts/footer')  %>

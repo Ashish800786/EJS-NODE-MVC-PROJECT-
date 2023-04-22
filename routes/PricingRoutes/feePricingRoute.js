@@ -1,0 +1,11 @@
+const express = require('express')
+const feePricingRouter=express()
+const feePricingController=require('../../controllers/PricingController/feePricingController')
+const auth_middleware= require('../../middlewares/authenticateMiddleware')
+const bodyParser= require('body-parser')
+feePricingRouter.use(bodyParser.json())
+feePricingRouter.use(bodyParser.urlencoded({extended:true}))
+feePricingRouter.set('view engine','ejs')
+feePricingRouter.set('views','./views')
+feePricingRouter.get('',auth_middleware.is_login,feePricingController.index)
+module.exports=feePricingRouter

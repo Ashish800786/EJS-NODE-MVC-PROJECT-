@@ -1,0 +1,362 @@
+<%- include('../layouts/main_layout')  %>
+ <!--Container Main start-->
+<div class="height-100 bg-light col-md-12" >
+    <h4>Dashboard </h4>
+
+    <div class="row">
+        <div class="card border-0 col-md-3 mt-2">
+            <div class="card-body p-3 bg-success text-light text-center rounded"> <i class='bx bx-user' ></i>
+                Users<hr class="mt-1 mb-1"/>
+                <table class="col-md-5 mx-auto">
+                    <tr>
+                        <td>Active</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Blocked</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                </table>
+               
+            </div>
+        </div>
+        <div class="card border-0 col-md-3 mt-2">
+            <div class="card-body p-3 bg-warning text-light text-center rounded"><i class='bx bx-rupee'></i> Fee<hr class="mt-1 mb-1"/>
+                <table class="col-md-5 mx-auto">
+                    <tr>
+                        <td>Paid</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Due</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="card border-0 col-md-3 mt-2">
+            <div class="card-body p-3 bg-primary text-light text-center rounded"><i class='bx bxs-report' ></i> Reports <hr class="mt-1 mb-1"/>
+                <table class="col-md-5 mx-auto">
+                    <tr>
+                        <td>Test</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Exam</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Final Exam</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="card border-0 col-md-3 mt-2">
+            <div class="card-body p-3 bg-danger text-light text-center rounded"><i class='bx bxs-file-find' ></i> Attandance<hr class="mt-1 mb-1"/>
+                <table class="col-md-5 mx-auto">
+                    <tr>
+                        <td>Present</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Absent</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="card border-0 col-md-3 mt-2">
+            <div class="card-body p-3 bg-secondary text-light text-center rounded"><i class='bx bxs-file-find' ></i> Teachers <hr class="mt-1 mb-1"/>
+                <table class="col-md-5 mx-auto">
+                    <tr>
+                        <td>Total</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Active</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Inactive</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="card border-0 col-md-3 mt-2">
+            <div class="card-body p-3 bg-info text-light text-center rounded"><i class='bx bxs-file-find' ></i> Subjects <hr class="mt-1 mb-1"/>
+                <table class="col-md-5 mx-auto">
+                    <tr>
+                        <td>Total</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Active</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Inactive</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="card border-0 col-md-3 mt-2">
+            <div class="card-body p-3 bg-dark text-light text-center rounded"><i class='bx bxs-file-find' ></i> Designation <hr class="mt-1 mb-1"/>
+                <table class="col-md-5 mx-auto">
+                    <tr>
+                        <td>Total</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Active</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Inactive</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        
+        <div class="card border-0 col-md-3 mt-2">
+            <div class="card-body p-3  text-light text-center rounded" style="background-color:#6a07c8f6;"><i class='bx bxs-file-find' ></i> Salary <hr class="mt-1 mb-1"/>
+                <table class="col-md-5 mx-auto">
+                    <tr>
+                        <td>Total</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Paid</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Due</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        
+        <div class="card border-0 col-md-3 mt-2">
+            <div class="card-body p-3 bg-danger text-light text-center rounded" ><i class='bx bxs-file-find' ></i> Complaints <hr class="mt-1 mb-1"/>
+                <table class="col-md-5 mx-auto">
+                    <tr>
+                        <td>Total</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Resolved</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Not Resolved</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        
+        <div class="card border-0 col-md-3 mt-2">
+            <div class="card-body p-4 bg-primary text-light text-center rounded" ><i class='bx bxs-file-find' ></i> Notice <hr class="mt-1 mb-1"/>
+                <table class="col-md-5 mx-auto">
+                    <tr>
+                        <td>Total</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Today</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Past</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+        <div class="card border-0 col-md-3 mt-2">
+            <div class="card-body p-4 bg-warning text-light text-center rounded" ><i class='bx bxs-file-find' ></i> Events <hr class="mt-1 mb-1"/>
+                <table class="col-md-5 mx-auto">
+                    <tr>
+                        <td>Total</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Today</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Past</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+       
+        <div class="card border-0 col-md-3 mt-2">
+            <div class="card-body p-4 bg-danger text-light text-center rounded" style="background-color:#6a07c8f6;">
+                <i class='bx bxs-file-find' ></i> Punishment Fines <hr class="mt-1 mb-1"/>
+                <table class="col-md-5 mx-auto">
+                    <tr>
+                        <td>Total</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Paid</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                    <tr>
+                        <td>Due</td>
+                        <td><span class="badge bg-light text-dark">0</span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+       
+    </div>
+</div>
+
+
+    <!-- graph -->
+    <div class="row column2 graph margin_bottom_30">
+        <div class="col-md-l2 col-lg-12">
+           <div class="white_shd full">
+              <div class="full graph_head">
+                 <div class="heading1 margin_0">
+                    <h2>Extra Area Chart</h2>
+                 </div>
+              </div>
+              <div class="full graph_revenue">
+                 <div class="row">
+                    <div class="col-md-12">
+                       <div class="content">
+                          <div class="area_chart">
+                             <canvas height="120" id="canvas"></canvas>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+     </div>
+     <!-- end graph -->
+     <div class="row column3">
+        <!-- testimonial -->
+        <div class="col-md-6">
+           <div class="dark_bg full margin_bottom_30">
+              <div class="full graph_head">
+                 <div class="heading1 margin_0">
+                    <h2>Testimonial</h2>
+                 </div>
+              </div>
+              <div class="full graph_revenue">
+                 <div class="row">
+                    <div class="col-md-12">
+                       <div class="content testimonial">
+                          <div id="testimonial_slider" class="carousel slide" data-ride="carousel">
+                             <!-- Wrapper for carousel items -->
+                             <div class="carousel-inner">
+                                <div class="item carousel-item active">
+                                   <div class="img-box"><img src="images/layout_img/user_img.jpg" alt=""></div>
+                                   <p class="testimonial">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae..</p>
+                                   <p class="overview"><b>Michael Stuart</b>Seo Founder</p>
+                                </div>
+                                <div class="item carousel-item">
+                                   <div class="img-box"><img src="images/layout_img/user_img.jpg" alt=""></div>
+                                   <p class="testimonial">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae..</p>
+                                   <p class="overview"><b>Michael Stuart</b>Seo Founder</p>
+                                </div>
+                                <div class="item carousel-item">
+                                   <div class="img-box"><img src="images/layout_img/user_img.jpg" alt=""></div>
+                                   <p class="testimonial">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae..</p>
+                                   <p class="overview"><b>Michael Stuart</b>Seo Founder</p>
+                                </div>
+                             </div>
+                             <!-- Carousel controls -->
+                             <a class="carousel-control left carousel-control-prev" href="#testimonial_slider" data-slide="prev">
+                             <i class="fa fa-angle-left"></i>
+                             </a>
+                             <a class="carousel-control right carousel-control-next" href="#testimonial_slider" data-slide="next">
+                             <i class="fa fa-angle-right"></i>
+                             </a>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+        <!-- end testimonial -->
+        <!-- progress bar -->
+        <div class="col-md-6">
+           <div class="white_shd full margin_bottom_30">
+              <div class="full graph_head">
+                 <div class="heading1 margin_0">
+                    <h2>Progress Bar</h2>
+                 </div>
+              </div>
+              <div class="full progress_bar_inner">
+                 <div class="row">
+                    <div class="col-md-12">
+                       <div class="progress_bar">
+                          <!-- Skill Bars -->
+                          <span class="skill" style="width:73%;">Facebook <span class="info_valume">73%</span></span>                  
+                          <div class="progress skill-bar ">
+                             <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="73" aria-valuemin="0" aria-valuemax="100" style="width: 73%;">
+                             </div>
+                          </div>
+                          <span class="skill" style="width:62%;">Twitter <span class="info_valume">62%</span></span>   
+                          <div class="progress skill-bar">
+                             <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100" style="width: 62%;">
+                             </div>
+                          </div>
+                          <span class="skill" style="width:54%;">Instagram <span class="info_valume">54%</span></span>
+                          <div class="progress skill-bar">
+                             <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="54" aria-valuemin="0" aria-valuemax="100" style="width: 54%;">
+                             </div>
+                          </div>
+                          <span class="skill" style="width:82%;">Google plus <span class="info_valume">82%</span></span>
+                          <div class="progress skill-bar">
+                             <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" style="width: 82%;">
+                             </div>
+                          </div>
+                          <span class="skill" style="width:48%;">Other <span class="info_valume">48%</span></span>
+                          <div class="progress skill-bar">
+                             <div class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" aria-valuenow="48" aria-valuemin="0" aria-valuemax="100" style="width: 48%;">
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+        <!-- end progress bar -->
+     </div>
+<!--Container Main end-->
+
+<%- include('../layouts/footer')  %>

@@ -1,0 +1,17 @@
+--AITHENTICATION---------------------->
+
+1. Registraion
+2. Login
+3. Logout
+4. Email Verifications
+5. Forgot Password
+6. Profile View
+7. Change Password With OTP
+
+---------IMAGES/FILE UPLAODING--------------------->
+
+1. Profile Image Uploading
+2. Profile Image downloading
+3. Report(PDF/Excel) downloading
+
+---
