@@ -9,26 +9,21 @@ const userController=require('../controllers/userController')
 // import userController from '../controllers/userController'
 const auth_middleware=require('../middlewares/authenticateMiddleware')
 
-
-
 const multer=require('multer')
 const fs= require('fs')
 var storage=multer.diskStorage({
     destination:function(req,file,callback){
-        var dir='./uploads';
+        var dir='./public/uploads';
         if(!fs.existsSync(dir)){
             fs.mkdirSync(dir)
         }
         callback(null,dir)
-
     }
     ,
     filename:function(req,file,callback){
         callback(null,file.originalname)
-
     }
 });
-
 var upload=multer({storage:storage});
 // var upload=multer({storage:storage}).array('img',12);
 
@@ -49,6 +44,8 @@ userRoutter.get('/user/edit/:id',auth_middleware.is_login,userController.user_ed
 userRoutter.post('/user/edit/:id',auth_middleware.is_login,userController.user_update)
 userRoutter.get('/user/delete/:id',auth_middleware.is_login,userController.user_delete)
 userRoutter.get('/profile',auth_middleware.is_login,userController.profile)
+userRoutter.post('/profile',auth_middleware.is_login,userController.profile_save)
+userRoutter.post('/profile/image',upload.single('img'),auth_middleware.is_login,userController.profile_img_save)
 userRoutter.get('/change-password',auth_middleware.is_login,userController.change_password)
 userRoutter.post('/change-password',auth_middleware.is_login,userController.change_password_change)
 

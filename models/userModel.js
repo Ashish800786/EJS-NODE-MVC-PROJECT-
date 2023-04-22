@@ -16,6 +16,10 @@ const user=mongoose.Schema({
         type:String,
         required:true
     },
+    profile_img:{
+        type:String,
+        default:null
+    },
     is_admin:{
         type:Number,
         required:false,
@@ -31,6 +35,11 @@ const user=mongoose.Schema({
         type:Number,
         required:true,
         default:1
+
+    },
+    address:{
+        type:String,
+        default:null
 
     },
 });

@@ -140,6 +140,7 @@ const register = async(req,res)=>{
                     email:req.body.email,
                     mobile:req.body.mobile,
                     password:secure_password,
+                    profile_img:req.body.img,
                     // password:req.body.password,
                     is_admin:0,
                     is_varified:0,
@@ -312,7 +313,7 @@ const dashboard =async(req,res)=>{
     try{
       const all_user=await userModel.find();
        data={
-       'user_session':req.session.user,
+       'user':req.session.user,
        }
         return res.render('user/userDashboard',data)
     }catch(error)
@@ -480,6 +481,45 @@ const profile=async(req,res)=>{
 
 }
 
+
+const profile_img_save=async(req,res)=>{
+    try{
+        const user_id=req.session.user._id
+        const users=await userModel.findById(user_id)
+        users.profile_img=req.file.filename
+        users.save()
+        return res.redirect('back')
+    }catch(error)
+    {
+        return res.redirect('back')
+    }
+}
+
+const profile_save=async(req,res)=>{
+    try{
+        const name=req.body.name
+        const email=req.body.email
+        const mobile=req.body.mobile
+        const address = req.body.address
+        console.log(req.body)
+        const user_id=await req.session.user._id
+        const users=await userModel.findById(user_id)
+        users.name=name
+        users.email=email
+        users.mobile=mobile
+        users.address=address
+        users.save()
+        console.log(users)
+        return res.redirect('/profile')
+
+    }catch(error)
+    {
+    console.log(error.message)        
+    return res.redirect("back")        
+    }
+
+}
+
 const change_password=async(req,res)=>{
     try{
 
@@ -561,6 +601,8 @@ module.exports={
     is_verified,
     profile,
     change_password,
-    change_password_change
+    change_password_change,
+    profile_save,
+    profile_img_save
 
 }

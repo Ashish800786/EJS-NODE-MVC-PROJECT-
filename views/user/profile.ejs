@@ -21,17 +21,17 @@
                </div>
                <div class="table_section padding_infor_info">
                  
-                     <form>
+                     <form action="/profile/image" method="post" enctype="multipart/form-data">
                         <div class="form-group">
-                          
+                           <label for="img" class="col-md-12">
                            <!-- <input type="text" placeholder="Teacher Name" id="teacher_txt" name="teacher_txt" class="form-control"> -->
-                          <center><img src="/images/dp.png" height="165px;"></center> 
+                          <center><img id="p_img" src="/uploads/<%= user.profile_img %>" height="165px;" width="165px;" class="rounded-circle"></center> 
+                          <!-- <center><img src="/images/dp.png" height="165px;" width="165px;"></center>  -->
+                          </label>
                         </div>
                         <div class="form-group">
-                            <label for="profile_img" class="col-md-12">
-                                <div class="btn btn-sm btn-success col-md-12 form-control"><i class="fa fa-upload"></i> upload </div>
-                            </label>
-                            <input type="file"  name="profile" id="profile_img" hidden >
+                           <button class="btn btn-sm btn-success col-md-12 form-control"><i class="fa fa-upload"></i> upload </button>
+                            <input type="file"  name="img" id="img" hidden onchange="preivew_img(event)">
                         </div>
                         
                         
@@ -49,8 +49,6 @@
             </div>
          </div>
          <!-- /Profile  -->
-
-
          <!-- Details -->
          <div class="col-md-9 ">
             <div class="white_shd full margin_bottom_30">
@@ -61,17 +59,21 @@
                </div>
                <div class="table_section padding_infor_info">
                  
-                     <form>
+                     <form action="/profile" method="POST">
                        <div class="row">
                         <div class="form-group col-md-4">
+                           <label> Name</label>
+                           <input type="text" placeholder="Name" id="name" name="name" class="form-control" value="<%= user.name %>">
+                        </div>
+                        <!-- <div class="form-group col-md-4">
                            <label>First Name</label>
                            <input type="text" placeholder="Teacher Name" id="teacher_txt" name="teacher_txt" class="form-control" value="<%= user.name %>">
-                        </div>
+                        </div> -->
 
-                        <div class="form-group col-md-4">
+                        <!-- <div class="form-group col-md-4">
                            <label>Last Name</label>
                            <input type="text" placeholder="Teacher Name" id="teacher_txt" name="teacher_txt" class="form-control">
-                        </div>
+                        </div> -->
                         <div class="form-group col-md-4">
                            <label>Email</label>
                            <input type="email" placeholder="Email" id="email" name="email" class="form-control" value="<%= user.email %>">
@@ -81,23 +83,28 @@
                            <input type="text" placeholder="mobile" id="mobile" name="mobile" class="form-control" value="<%= user.mobile %>">
                         </div>
 
-                        <div class="form-group col-md-4">
+                        <!-- <div class="form-group col-md-4">
                            <label>Subject</label>
                            <select  id="subject_dpd" name="subject_dpd" class="form-control">
                               <option>Nothing selected</option>
                               <option value="1">Hindi</option>
                               <option value="2">English</option>
                            </select>
-                        </div>
+                        </div> -->
                         
+                        <!-- <div class="form-group col-md-12">
+                           <label>Prfile Image</label>
+                           <input type="file" name="img" class="form-control" />
+                        </div>
+                         -->
                         <div class="form-group col-md-12">
                            <label>Address</label>
-                           <textarea name="address" id="address" class="form-control"></textarea>
+                           <textarea name="address" id="address" class="form-control"><%= user.address %></textarea>
                         </div>
 
 
                         <div class="form-group col-md-12">
-                            <div class="btn btn-sm btn-success col-md-12">Submit</div>
+                            <button class="btn btn-sm btn-success col-md-12">Submit</button>
                         </div>
                     </div>
                      </form>
@@ -110,4 +117,15 @@
       </div>
    </div>
 <!-- end dashboard inner -->
+<script>
+   function preivew_img(event)
+   {
+   //   console.log(event.target.files[0]);
+    var img=  URL.createObjectURL(event.target.files[0]);
+    $('#p_img').attr('src',img);
+   }
+
+
+   $('#mobile').inputmask('(+91) 9999999999');
+</script>
 <%- include('../layouts/footer')  %>
