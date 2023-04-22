@@ -140,7 +140,7 @@ const register = async(req,res)=>{
                     email:req.body.email,
                     mobile:req.body.mobile,
                     password:secure_password,
-                    profile_img:req.body.img,
+                    profile_img:req.file.filename,
                     // password:req.body.password,
                     is_admin:0,
                     is_varified:0,
@@ -288,7 +288,7 @@ const logout = async(req,res)=>{
 const forgot_password=async(req,res)=>{
     try{
         let data='Forgot Password'
-        res.render('user/userForgotPassword',{'data':data})
+        res.render('user/userForgotPassword',{'data':data,'msg':req.flash('msg'),'err':req.flash('err')})
     }
     catch(error)
     {
@@ -298,13 +298,30 @@ const forgot_password=async(req,res)=>{
 
 }
 
-const forgot_password_submit=async()=>{
+const forgot_password_submit=async(req,res)=>{
     try{
+
+        const email=req.body.email
+        const users=await userModel.findOne({email:email})
+        if (users)
+        {
+            users.password=await bcrypt.hash('123',10)
+            users.save()
+            req.flash('msg','Your New Password is : 123. Please login with this password')
+            return res.redirect('/login');
+
+        }else
+        {
+            req.flash('err','Email not found.')
+            return res.redirect('back')
+        }
         
-        return res.send('Password mail Sent..');
+       
+        // return res.send('Password mail Sent..');
     }catch(error)
     {
-        return res.send(error.message)
+        console.log(error.message)
+        return res.redirect('back')
 
     }
 }
