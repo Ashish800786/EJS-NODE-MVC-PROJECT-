@@ -16,7 +16,6 @@ var storage=multer.diskStorage({
             fs.mkdirSync(dir)
         }
         callback(null,dir)
-
     }
     ,
     filename:function(req,file,callback){
@@ -42,6 +41,12 @@ const examReportRouter=require('./routes/ReportsRoutes/examReportRoute')
 const testReportRouter=require('./routes/ReportsRoutes/testReportRoute')
 const feePricingRouter=require('./routes/PricingRoutes/feePricingRoute')
 const salaryPricingRouter= require('./routes/PricingRoutes/salaryPricingRoute')
+const moment = require("moment");
+
+app.use((req, res, next)=>{
+    res.locals.moment = moment;
+    next();
+  });
 // / ROUTERS---------------------------------------->
 const cookieParser=require('cookie-parser')
 app.use(cookieParser());

@@ -1,0 +1,88 @@
+<%- include('../../layouts/main_layout')  %>
+<!-- dashboard inner -->
+<div class="midde_cont">
+   <div class="container-fluid">
+      <div class="row column_title">
+         <div class="col-md-12">
+            <div class="page_title">
+               <h2>Subjects History</h2>
+            </div>
+         </div>
+      </div>
+      <!-- row -->
+       <div class="row">
+         <!-- table section -->
+         <div class="col-md-12">
+            <div class="white_shd full margin_bottom_30">
+               <div class="full graph_head">
+                  <div class="heading1 margin_0">
+                     <!-- <h2>Manage History</h2> -->
+                     <a class="btn btn-success" href="/master/subjects"><i class=" fa fa-arrow-left"></i> Back </a>
+                  </div>
+                  <span class="badges badges-light float-right border pl-2 pr-2 rounded border-warning  text-dark m-1">PDF</span>
+                  <span class="badges badges-light float-right border pl-2 pr-2 rounded border-success text-dark m-1 ">EXS</span>
+               </div>
+               <div class="table_section padding_infor_info">
+                  <div class="table-responsive-sm">
+                     <table class="table table-dark table-striped">
+                        <thead style="vertical-align: middle;" class="text-center">
+                           <tr>
+                              <th>Record Status</th>
+                              <th>Created/Updated By</th>
+                              <th>Subject</th>
+                              <th>Status</th>
+                              <th>Created At</th>
+                           </tr>
+                        </thead>
+                        <tbody style="vertical-align: middle;" class="text-center">
+
+                           <% subjects_history.map(function(value){ %> 
+                           <tr>
+                              <td>
+                                 <% if(value.history_status=='CREATED'){ %><span class="badge badge-success">Created</span><%} %>
+                                 <% if(value.history_status=='UPDATED'){ %><span class="badge badge-warning">Updated</span><%} %>
+                                 <% if(value.history_status=='DELETED'){ %><span class="badge badge-danger">Deleted</span><%} %>
+                                 <% if(value.history_status=='RESTORED'){ %><span class="badge badge-success">Restored</span><%} %>
+                                 <% if(value.history_status=='STATUS_CHANGED'){ %><span class="badge " style="background-color: blueviolet;">Status Changed</span><%} %>
+                              </td>
+
+                              <td><i class="fa fa-user"></i> <%= value.u_name[0].name %></td>
+                              <td><%= value.name %></td>
+                              
+                              <td>
+                                
+                                 <% if(value.status){ %>
+                                    <i class="fa fa-check text-success"></i>
+                                 <% }else{ %>
+                                    <i class="fa fa-times text-danger"></i>
+                                 <%} %>
+                              
+                              </td>
+                            
+                            
+                              
+                              <td>
+                                 <i class="fa fa-calendar text-danger"></i> <%= moment(value.created_at).format('Do MMMM, YYYY'); %>
+                                 <br/>
+                                 <i class="fa fa-clock-o text-danger"></i> <%= moment(value.created_at).format('HH:MM:SS A'); %>
+                              </td>
+                              
+                        
+                            
+                           </tr>
+                           <%})%>
+                        </tbody>
+                     </table>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- table section -->
+ 
+        
+      </div>
+   </div>
+
+
+
+<%- include('../../layouts/footer')  %>

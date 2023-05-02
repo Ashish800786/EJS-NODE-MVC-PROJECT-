@@ -10,8 +10,8 @@
          </div>
       </div>
       <!-- row -->
-      <div class="row">
-         <div class="col-md-4">
+       <div class="row">
+        <!-- <div class="col-md-4">
             <div class="white_shd full margin_bottom_30">
                <div class="full graph_head">
                   <div class="heading1 margin_0">
@@ -42,41 +42,92 @@
                   </div>
                </div>
             </div>
-         </div>
+         </div> -->
          <!-- table section -->
-         <div class="col-md-8">
+         <div class="col-md-12">
             <div class="white_shd full margin_bottom_30">
                <div class="full graph_head">
                   <div class="heading1 margin_0">
-                     <h2>Manage Subjects</h2>
+                     <!-- <h2>Manage Subjects</h2> -->
+                     <button class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter"><i class=" fa fa-plus"></i> Create New</button>
                   </div>
+                  <span class="badges badges-light float-right border pl-2 pr-2 rounded border-warning  text-dark m-1">PDF</span>
+                  <span class="badges badges-light float-right border pl-2 pr-2 rounded border-success text-dark m-1 ">EXS</span>
                </div>
                <div class="table_section padding_infor_info">
                   <div class="table-responsive-sm">
                      <table class="table table-dark table-striped">
-                        <thead>
+                        <thead style="vertical-align: middle;" class="text-center">
                            <tr>
-                              <th>Firstname</th>
-                              <th>Lastname</th>
-                              <th>Email</th>
+                              <th>History</th>
+                              <th>Record Status</th>
+                              <th>Created/Updated By</th>
+                              <th>Subject</th>
+                              <th>Status</th>
+                              <th colspan="2">Action</th>
+                              <th>Created At</th>
+                              <th>Updated At</th>
                            </tr>
                         </thead>
-                        <tbody>
+                        <tbody style="vertical-align: middle;" class="text-center">
+
+                           <% subjects.map(function(value){ %> 
                            <tr>
-                              <td>John</td>
-                              <td>Doe</td>
-                              <td>john@example.com</td>
+                              <td>
+                                 <a href="/master/subjects/history/<%= value._id %>" ><i class="fa fa-history text-primary"></i></a>
+                              </td>
+                              
+                              <td>
+                                 <% if(value.history_status=='CREATED'){ %><span class="badge badge-success">Created</span><%} %>
+                                 <% if(value.history_status=='UPDATED'){ %><span class="badge badge-warning">Updated</span><%} %>
+                                 <% if(value.history_status=='DELETED'){ %><span class="badge badge-danger">Deleted</span><%} %>
+                                 <% if(value.history_status=='RESTORED'){ %><span class="badge" style="background-color: darkorange;">Restored</span><%} %>
+                                 <% if(value.history_status=='STATUS_CHANGED'){ %><span class="badge " style="background-color: blueviolet;">Status Changed</span><%} %>
+                              </td>
+
+                              <td><i class="fa fa-user"></i> <%= value.u_name[0].name %></td>
+                              
+                              <td><%= value.name %></td>
+                              
+                              <td>
+                                 <a href="/master/subjects/status/<%= value._id %>" >
+                                 <% if(value.status){ %>
+                                    <i class="fa fa-check text-success"></i>
+                                 <% }else{ %>
+                                    <i class="fa fa-times text-danger"></i>
+                                 <%} %>
+                              </a>
+                              </td>
+                            
+                              <td><i class="fa fa-edit text-warning" data-toggle="modal" data-target="#exampleModalCenter2" onclick="edit_data('<%= value._id %>','<%= value.name %>','<%= value.status %>')"></i></td>
+                              
+                              <td>
+                                 
+                                 <% if(value.delete_status == 1){ %>
+                                    <a href="/master/subjects/restore/<%= value._id %>" >
+                                    <i class="fa fa-recycle text-success"></i>
+                                    </a>
+                                    <% }else{ %>
+                                       <a href="/master/subjects/delete/<%= value._id %>" >
+                                       <i class="fa fa-trash text-danger"></i>
+                                       </a>
+                                 <%} %>
+                              </td>
+                              
+                              <td>
+                                 <i class="fa fa-calendar text-danger"></i> <%= moment(value.created_at).format('Do MMMM, YYYY'); %>
+                                 <br/>
+                                 <i class="fa fa-clock-o text-danger"></i> <%= moment(value.created_at).format('HH:MM:SS A'); %>
+                              </td>
+                              
+                              <td>
+                                 <i class="fa fa-calendar text-danger"></i> <%= moment( value.updated_at).format('Do MMMM, YYYY'); %>
+                                 <br/>
+                                 <i class="fa fa-clock-o text-danger"></i> <%= moment(value.updated_at).format('HH:MM:SS A'); %>
+                              </td>
+                            
                            </tr>
-                           <tr>
-                              <td>Mary</td>
-                              <td>Moe</td>
-                              <td>mary@example.com</td>
-                           </tr>
-                           <tr>
-                              <td>July</td>
-                              <td>Dooley</td>
-                              <td>july@example.com</td>
-                           </tr>
+                           <%})%>
                         </tbody>
                      </table>
                   </div>
@@ -88,5 +139,95 @@
         
       </div>
    </div>
+
+
+   <!-- MODAL -->
+<!-- Button trigger modal -->
+
+ 
+ <!-- Modal -->
+ <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered" role="document">
+     <div class="modal-content">
+       <div class="modal-header bg-dark text-light">
+         <h5 class="modal-title text-light" id="exampleModalLongTitle">Create New</h5>
+         <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       <div class="modal-body">
+         <form action="" method="post">
+            <div class="form-group">
+               <label for="subject_name_txt">Subject Name</label>
+               <input type="text" placeholder="Subject Name" id="subject_name_txt" name="subject_name_txt" class="form-control">
+            </div>
+            <div class="form-group">
+               <label for="subject_status_dpd">Status</label>
+               <select  id="subject_status_dpd" name="subject_status_dpd" class="form-control">
+                  <option value="1">Active</option>
+                  <option value="0">Deactive</option>
+               </select>
+            </div>
+            <button class="btn btn-sm btn-success col-md-12">Submit</button>
+         </form>
+     
+       </div>
+       <div class="modal-footer">
+         <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+         <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+       </div>
+     </div>
+   </div>
+ </div>
+   <!--/ MODAL -->
+
+   
+
+ <!-- Modal -->
+ <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter2Title" aria-hidden="true">
+   <div class="modal-dialog modal-dialog-centered" role="document">
+     <div class="modal-content">
+       <div class="modal-header bg-dark text-light">
+         <h5 class="modal-title  text-white" id="exampleModalLongTitle">Update </h5>
+         <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       <div class="modal-body">
+         <form action="/master/subjects/update" method="post">
+            <div class="form-group" hidden>
+               <label for="id">Id</label>
+               <input type="hidden"  id="edit_id" name="id" class="form-control">
+            </div>
+            <div class="form-group">
+               <label for="subject_name_txt">Subject Name</label>
+               <input type="text" placeholder="Subject Name" id="edit_subject_name_txt" name="subject_name_txt" class="form-control">
+            </div>
+            <div class="form-group">
+               <label for="subject_status_dpd">Status</label>
+               <select  id="edit_subject_status_dpd" name="subject_status_dpd" class="form-control">
+                  <option value="1">Active</option>
+                  <option value="0">Deactive</option>
+               </select>
+            </div>
+            <button class="btn btn-sm btn-success col-md-12">Update</button>
+         </form>
+       </div>
+       <div class="modal-footer">
+         <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+         <button type="button" class="btn btn-primary">Save changes</button> -->
+       </div>
+     </div>
+   </div>
+ </div>
+   <!--/ MODAL -->
 <!-- end dashboard inner -->
+<script>
+   function edit_data(id,name,status)
+   {
+      $('#edit_id').val(id);
+      $('#edit_subject_name_txt').val(name);
+      $('#edit_subject_status_dpd option[value="'+status+'"]').attr('selected',true);
+   }
+</script>
 <%- include('../../layouts/footer')  %>

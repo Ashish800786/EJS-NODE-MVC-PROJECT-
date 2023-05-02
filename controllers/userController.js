@@ -4,7 +4,7 @@ const body=require
 const userModel=require('../models/userModel')
 const bcrypt = require('bcrypt')
 const nodemailer=require('nodemailer')
-const session = require('express-session')
+// const session = require('express-session')
 // const multer= require('multer')
 // const fs= require('fs')
 // var storage=multer.diskStorage({
@@ -68,7 +68,7 @@ const sendVerificationMail=async(req,name,email,user_id)=>{
             requireTLS:true,
             auth:{
                 user:'ashishyadav800786@gmail.com',
-                pass:"zebqqkbqrcxccekf"
+                pass:"arhiuusztufljbut"
 
             },
         })
@@ -331,6 +331,7 @@ const dashboard =async(req,res)=>{
       const all_user=await userModel.find();
        data={
        'user':req.session.user,
+       session:req.session
        }
         return res.render('user/userDashboard',data)
     }catch(error)
@@ -398,6 +399,7 @@ const user_edit=async(req,res)=>{
             'id':id,
             'user':user_data,
             'user_session':req.session.user,
+            session:req.session,
             'msg':req.flash('msg'),
             'err':req.flash('err'),
         }
@@ -486,7 +488,8 @@ const profile=async(req,res)=>{
         const id =req.session.user._id;
         const user_data=await userModel.findById(id)
         context={
-            'user':user_data
+            'user':user_data,
+            session:req.session,
         }
         return res.render('user/profile',context)
 
@@ -546,6 +549,7 @@ const change_password=async(req,res)=>{
             'user':users,
             'msg':req.flash('msg'),
             'err':req.flash('err'),
+            session:req.session,
         }
        return res.render('user/change_password',context)
     }catch(err)
